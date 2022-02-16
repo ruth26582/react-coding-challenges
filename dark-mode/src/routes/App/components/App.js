@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import '../styles/_app.scss';
+import { ThemeContext } from '../contexts/theme';
 
 function App() {
+  const [{theme}, toggleTheme] = useContext(ThemeContext);
   return (
     <div className="app">
       <div className="level">
@@ -12,8 +13,8 @@ function App() {
         </div>
 
         {/* --The button that should toggle dark mode-- */}
-        <button className="app__dark-mode-btn icon level-right">
-          <FontAwesomeIcon icon={faMoon} />
+        <button className="app__dark-mode-btn icon level-right" onClick={toggleTheme}>
+          <FontAwesomeIcon icon={theme.icon} color={theme.iconColor} />
         </button>
 
       </div>
